@@ -7,6 +7,7 @@ import { GifsService } from 'src/app/gifs/services/gifs.service';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  // tslint:disable-next-line: typedef
   get historial() {
     return this.gifsService.historial;
   }
