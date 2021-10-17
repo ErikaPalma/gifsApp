@@ -1,1 +1,21 @@
-<p>resultados works!</p>
+
+
+
+<div class="row">
+    <div *ngFor="let gif of resultados" class="col-md-4 col-sm-6">
+        <div class="card">
+            <!-- Si lo dejo sin corchetes, lo interpreta como un string, pero si
+                quiero que el src sea igual al valor de la propiedad, lo meto entre corchetes
+                <img src="gif.images.downsized_medium.url" alt=""-->
+            <img [src]="gif.images.downsized_medium.url" 
+                 [alt]="gif.title"
+                 class="card-image-top">
+                    
+            <div class="card-body">
+                <p class="card-text">
+                   {{gif.title}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
