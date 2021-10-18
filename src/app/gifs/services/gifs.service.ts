@@ -6,7 +6,7 @@ import { Gif, SearchGifsResponse } from '../interfaces/gifs.interface';
   providedIn: 'root',
 })
 export class GifsService {
-  private apikey: string = 'c6vemWY8Vi2OwXvnV1t6tqr9JVCDM1oG';
+  private apikey = 'c6vemWY8Vi2OwXvnV1t6tqr9JVCDM1oG';
   // tslint:disable-next-line: variable-name
   private _historial: string[] = [];
 
@@ -17,7 +17,11 @@ export class GifsService {
     // Uso el spread para evitar una posible modificación del array original
     return [...this._historial];
   }
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem('historial')) {
+      this._historial = JSON.parse(localStorage.getItem('historial'));
+    }
+  }
 
   // tslint:disable-next-line: typedef
   buscarGifs(query: string) {
@@ -26,6 +30,7 @@ export class GifsService {
       // voy añadiendo la última búsqueda al principio (query)
       this._historial.unshift(query);
       this._historial = this._historial.splice(0, 10);
+      localStorage.setItem('historial', JSON.stringify(this._historial));
     }
 
     this.http
