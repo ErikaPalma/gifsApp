@@ -31,11 +31,11 @@ export class GifsService {
     if (!this._historial.includes(query)) {
       // voy añadiendo la última búsqueda al principio (query)
       this._historial.unshift(query);
-      //corto el array para guardar únicamente 10 búsquedas
+      // corto el array para guardar únicamente 10 búsquedas
       this._historial = this._historial.splice(0, 10);
       localStorage.setItem('historial', JSON.stringify(this._historial));
     }
-    //Establecer parámetros en la url como lo hace postman
+    // Establecer parámetros en la url como lo hace postman
     const params = new HttpParams()
       .set('api_key', this.apikey)
       .set('limit', '10')

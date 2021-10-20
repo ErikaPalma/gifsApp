@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(private gifsService: GifsService) {}
 
+  // tslint:disable-next-line: typedef
   buscar(termino) {
     this.gifsService.buscarGifs(termino);
     console.log(termino);
